@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import FloatingProfileCard from "../FloatingProfileCard";
 
 const impactMetrics = [
   "Managed $45K+ annual budget",
@@ -11,10 +12,6 @@ const impactMetrics = [
 ];
 
 export default function HeroSection() {
-  const handleScrollToFeatured = () => {
-    document.getElementById("featured")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const handleScrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -57,7 +54,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="font-body text-lg text-secondary-text mb-6 max-w-lg"
             >
-              Operations, Project Management, and Analytics. I build systems that make spending clearer, faster, and easier to manage.
+              Project Management, Operations, Business Development, and Analytics. I build systems that make spending clearer, faster, and easier to manage.
             </motion.p>
 
             {/* Availability Line */}
@@ -69,7 +66,7 @@ export default function HeroSection() {
             >
               <span className="w-2 h-2 bg-teal rounded-full animate-pulse" />
               <span className="font-mono text-sm text-secondary-text">
-                Seeking internships: Operations | Project Management | Data Analytics
+                Seeking roles in: Project Management | Operations | Business Development | Data Analytics
               </span>
             </motion.div>
 
@@ -100,12 +97,14 @@ export default function HeroSection() {
               transition={{ delay: 0.9, duration: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <button
-                onClick={handleScrollToFeatured}
+              <a
+                href="/Timothy%20Gaines%20Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary font-body text-base"
               >
-                View Featured Work
-              </button>
+                View Resume
+              </a>
               <button
                 onClick={handleScrollToContact}
                 className="btn-secondary font-body text-base"
@@ -115,8 +114,13 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Empty space for 3D receipt visualization */}
-          <div className="hidden lg:block" aria-hidden="true" />
+          {/* Right: Floating Profile Card */}
+          <div className="hidden lg:flex items-center justify-center">
+            <FloatingProfileCard
+              imageSrc="/images/profile.png"
+              alt="Timothy Gaines - Project Manager and Developer"
+            />
+          </div>
         </div>
       </div>
 

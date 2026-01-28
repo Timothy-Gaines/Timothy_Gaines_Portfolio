@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef } from "react";
-import { X, ExternalLink, Github } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, Github, Linkedin, ZoomIn, ZoomOut } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
   id: number;
@@ -15,6 +16,7 @@ interface Project {
   impact?: string;
   githubUrl?: string;
   liveUrl?: string;
+  image?: string;
 }
 
 interface ProjectModalProps {
@@ -24,23 +26,35 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
+  const linkedInProjectsUrl =
+    "https://www.linkedin.com/in/timothy-gaines-329b23257/details/projects/";
 
-  // Handle escape key
+  // Handle escape key and reset expanded state
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        if (isImageExpanded) {
+          setIsImageExpanded(false);
+        } else {
+          onClose();
+        }
+      }
     };
 
     if (project) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
+    } else {
+      // Reset expanded state when modal closes
+      setIsImageExpanded(false);
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
     };
-  }, [project, onClose]);
+  }, [project, onClose, isImageExpanded]);
 
   // Focus trap
   useEffect(() => {
@@ -105,6 +119,37 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             >
               <X className="w-5 h-5" />
             </button>
+
+            {/* Project Image */}
+            {project.image && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+                className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl bg-slate-800/50 cursor-pointer group"
+                onClick={() => setIsImageExpanded(true)}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 90vw, 600px"
+                  className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
+                {/* Zoom hint overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ opacity: 1, scale: 1 }}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-3">
+                      <ZoomIn className="w-5 h-5 text-primary-text" />
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
 
             {/* Content */}
             <div className="p-8">
@@ -179,38 +224,54 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     GitHub
                   </a>
                 ) : (
-                  <button
-                    disabled
-                    className="btn-secondary font-body text-sm flex items-center gap-2 opacity-50 cursor-not-allowed"
-                    title="Link coming soon"
-                  >
-                    <Github className="w-4 h-4" />
-                    GitHub
-                  </button>
-                )}
-
-                {project.liveUrl ? (
                   <a
-                    href={project.liveUrl}
+                    href={linkedInProjectsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary font-body text-sm flex items-center gap-2"
+                    className="btn-secondary font-body text-sm flex items-center gap-2"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
+                    <Linkedin className="w-4 h-4" />
+                    LinkedIn
                   </a>
-                ) : (
-                  <button
-                    disabled
-                    className="btn-primary font-body text-sm flex items-center gap-2 opacity-50 cursor-not-allowed"
-                    title="Link coming soon"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </button>
                 )}
               </div>
             </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Lightbox for expanded image */}
+      {project?.image && isImageExpanded && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90"
+          onClick={() => setIsImageExpanded(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="relative max-w-5xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={1200}
+              height={750}
+              className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+            />
+            <button
+              onClick={() => setIsImageExpanded(false)}
+              className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full text-primary-text hover:bg-white transition-colors"
+              aria-label="Close expanded image"
+            >
+              <ZoomOut className="w-5 h-5" />
+            </button>
           </motion.div>
         </motion.div>
       )}

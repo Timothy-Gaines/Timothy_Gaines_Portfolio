@@ -6,16 +6,16 @@ import { useRef } from "react";
 
 const storyBullets = [
   {
-    label: "INPUT",
-    text: "Receipts arrive in a shared system and must be linked to the right project and spending context.",
+    label: "SUBMIT",
+    text: "Members upload receipts, select the correct club and project, and provide the required details upfront.",
   },
   {
-    label: "PROCESS",
-    text: "Data becomes structured, validated, and reviewable with clear status and audit-ready records.",
+    label: "VALIDATE",
+    text: "Receipts are checked against school requirements, with issues automatically flagged for correction before review.",
   },
   {
-    label: "OUTPUT",
-    text: "Dashboards and summaries make decisions faster and keep teams aligned on budgets.",
+    label: "REIMBURSE",
+    text: "Treasurers review compliant receipts and mark them reimbursed once they are ready to be filed with the school.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function StorySection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="font-body text-lg text-secondary-text mb-10 leading-relaxed"
           >
-            I have built and improved real systems that connect receipts, structured data, approvals, and reporting. This site is a cinematic walkthrough of that workflow, inspired by the tools I built for Bronco Space and my internship experience supporting project coordination and performance visibility.
+            I design and build real systems that move receipts through structured data, validation, and approval workflows. This site is a guided walkthrough of that process, inspired by tools I built for Bronco Space and through my internship experience supporting project coordination and operational visibility.
           </motion.p>
 
           {/* Bullet Points */}

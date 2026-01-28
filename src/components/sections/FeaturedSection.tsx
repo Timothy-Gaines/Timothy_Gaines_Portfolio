@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Code2 } from "lucide-react";
+import BrowserMockup from "../BrowserMockup";
 
 interface FeaturedProject {
   title: string;
@@ -13,6 +14,8 @@ interface FeaturedProject {
   techStack: string[];
   ctaButtons: { label: string; primary: boolean; href?: string }[];
   textPosition: "left" | "right";
+  images: string[];
+  mockupTitle?: string;
 }
 
 const featuredProjects: FeaturedProject[] = [
@@ -20,29 +23,30 @@ const featuredProjects: FeaturedProject[] = [
     title: "Reimbursement Hub",
     subtitle: "Full-Stack Web Application | Jul 2025 to Present",
     challenge:
-      "Treasurers and project leads needed a clear, consistent way to track expenses, review receipts, reduce manual errors, and maintain real-time visibility into spending across teams.",
+      "Treasurers and project leads needed a consistent process to review receipts, automatically and quickly flag compliance issues, keep expenses organized, and reduce delays in the reimbursement process.",
     solution:
       "I built a full-stack reimbursement platform to streamline expense submissions, approvals, and tracking. The system supports defined roles and workflows, uses receipt extraction and compliance checks, and provides dashboards for budgeting and expenditure insights.",
     impact: [
-      "Rolling out to 15 treasurers and project leads",
       "Improves oversight across 150+ members by reducing manual errors",
       "Delivers real-time dashboards for financial visibility",
+      "Reduces delays in the reimbursement process by 35%",
     ],
     techStack: [
       "React",
       "FastAPI",
-      "Firebase Auth",
-      "Firestore",
-      "Storage",
+      "Supabase Auth",
+      "Cursor",
+      "Vercel",
       "Docker",
       "Cloud Run",
       "AI Receipt Extraction",
     ],
     ctaButtons: [
-      { label: "Open Case Study", primary: true },
-      { label: "View Tech Stack", primary: false },
+      { label: "View Site", primary: true, href: "https://www.reimbursement-hub.com/" },
     ],
     textPosition: "left",
+    images: ["/images/reimbursement-hub-landing.png", "/images/reimbursement-hub-budget.png"],
+    mockupTitle: "reimbursement-hub.com",
   },
   {
     title: "Expense Tracker with Receipt Viewing",
@@ -59,9 +63,10 @@ const featuredProjects: FeaturedProject[] = [
     techStack: ["Excel", "VBA", "Python", "File Automation", "Receipt Processing"],
     ctaButtons: [
       { label: "Open Case Study", primary: true },
-      { label: "View Details", primary: false },
     ],
     textPosition: "right",
+    images: ["/images/expense-tracker.png"],
+    mockupTitle: "Expense Tracker.xlsm",
   },
 ];
 
@@ -182,32 +187,41 @@ function FeaturedChapter({
             transition={{ delay: 0.5, duration: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            {project.ctaButtons.map((btn) => (
-              <button
-                key={btn.label}
-                className={`${
-                  btn.primary ? "btn-primary" : "btn-secondary"
-                } font-body text-sm flex items-center gap-2`}
-              >
-                {btn.primary ? (
-                  <ExternalLink className="w-4 h-4" />
-                ) : (
-                  <Code2 className="w-4 h-4" />
-                )}
-                {btn.label}
-              </button>
-            ))}
+            {project.ctaButtons.map((btn) => {
+              const ButtonComponent = btn.href ? "a" : "button";
+              const buttonProps = btn.href
+                ? { href: btn.href, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              return (
+                <ButtonComponent
+                  key={btn.label}
+                  {...buttonProps}
+                  className={`${
+                    btn.primary ? "btn-primary" : "btn-secondary"
+                  } font-body text-sm flex items-center gap-2`}
+                >
+                  {btn.primary ? (
+                    <ExternalLink className="w-4 h-4" />
+                  ) : (
+                    <Code2 className="w-4 h-4" />
+                  )}
+                  {btn.label}
+                </ButtonComponent>
+              );
+            })}
           </motion.div>
         </div>
       </div>
 
-      {/* Visual Side - Space for 3D visualization */}
+      {/* Visual Side - Browser Mockup */}
       <div
-        className={`${visualOrder} lg:${visualOrder} hidden lg:flex items-center justify-center min-h-[400px]`}
-        aria-hidden="true"
+        className={`${visualOrder} lg:${visualOrder} flex items-center justify-center min-h-[400px] px-4 lg:px-0`}
       >
-        {/* 3D content renders behind via ThreeBackground */}
-        <div className="w-full h-full" />
+        <BrowserMockup
+          images={project.images}
+          title={project.mockupTitle}
+          stacked={project.images.length > 1}
+        />
       </div>
     </motion.div>
   );

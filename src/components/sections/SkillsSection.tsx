@@ -10,27 +10,48 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    name: "Languages",
-    skills: ["Python", "SQL", "JavaScript", "TypeScript", "VBA"],
-  },
-  {
-    name: "Frameworks",
-    skills: ["React", "FastAPI", "React Three Fiber", "Three.js"],
-  },
-  {
-    name: "Data and BI",
-    skills: ["Power BI", "Excel", "Pandas", "NumPy", "scikit-learn"],
-  },
-  {
-    name: "Cloud and Tooling",
+    name: "Product and Program Management",
     skills: [
-      "Firebase (Auth, Firestore, Storage)",
-      "Docker",
-      "Cloud Run",
-      "Git and GitHub",
+      "Product Requirements and PRDs",
+      "Workflow and Process Design",
+      "Stakeholder Communication",
+      "Cross-Functional Coordination",
+      "Roadmapping and Prioritization",
+      "User-Centered Design Thinking",
+    ],
+  },
+  {
+    name: "Data, Analytics, and Decision Support",
+    skills: [
+      "Data Analysis and Interpretation",
+      "Operational Metrics and KPIs",
+      "Dashboard Design",
+      "SQL-Based Data Exploration",
+      "Excel and Spreadsheet Modeling",
+    ],
+  },
+  {
+    name: "Applied AI and Automation",
+    skills: [
+      "AI-Assisted Workflow Automation",
+      "Receipt OCR and Data Extraction",
+      "AI Validation and Error Detection",
+      "Human-in-the-Loop Review Systems",
+      "Prompt Engineering for Business Use Cases",
+    ],
+  },
+  {
+    name: "Systems, Platforms, and Tools",
+    skills: [
+      "Full-Stack System Architecture (Conceptual)",
+      "Role-Based Access Control (RBAC)",
+      "Cloud-Based Application Workflows",
+      "Version Control and Collaboration (GitHub)",
+      "Deployment and Environment Management",
     ],
   },
 ];
+
 
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);

@@ -43,7 +43,7 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.5 }}
-          href="mailto:YOUR_EMAIL_HERE"
+          href="mailto:Timgaines03@gmail.com"
           className="btn-primary font-body text-lg px-8 py-4 inline-flex items-center gap-3"
         >
           <Mail className="w-5 h-5" />
@@ -58,7 +58,7 @@ export default function ContactSection() {
           className="flex justify-center gap-4 mt-8"
         >
           <a
-            href="YOUR_LINKEDIN_URL_HERE"
+            href="https://www.linkedin.com/in/timothy-gaines-329b23257/"
             target="_blank"
             rel="noopener noreferrer"
             className="glass-panel p-4 text-secondary-text hover:text-signal-orange hover:border-signal-orange transition-all duration-200"
@@ -67,7 +67,7 @@ export default function ContactSection() {
             <Linkedin className="w-6 h-6" />
           </a>
           <a
-            href="YOUR_GITHUB_URL_HERE"
+            href="https://github.com/Timothy-Gaines"
             target="_blank"
             rel="noopener noreferrer"
             className="glass-panel p-4 text-secondary-text hover:text-signal-orange hover:border-signal-orange transition-all duration-200"
@@ -84,7 +84,7 @@ export default function ContactSection() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="font-mono text-xs text-secondary-text mt-16"
         >
-          © {new Date().getFullYear()} Timothy Gaines. Built with Next.js and React Three Fiber.
+          © {new Date().getFullYear()} Timothy Gaines.
         </motion.p>
       </div>
     </section>
