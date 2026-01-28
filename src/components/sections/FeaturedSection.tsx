@@ -61,9 +61,7 @@ const featuredProjects: FeaturedProject[] = [
       "Reduced time spent on file cleanup and manual sorting",
     ],
     techStack: ["Excel", "VBA", "Python", "File Automation", "Receipt Processing"],
-    ctaButtons: [
-      { label: "Open Case Study", primary: true },
-    ],
+    ctaButtons: [],
     textPosition: "right",
     images: ["/images/expense-tracker.png"],
     mockupTitle: "Expense Tracker.xlsm",

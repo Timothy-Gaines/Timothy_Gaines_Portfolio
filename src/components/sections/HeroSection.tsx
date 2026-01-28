@@ -34,7 +34,7 @@ export default function HeroSection() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="font-mono text-sm text-secondary-text tracking-wider"
             >
-              RECEIPT TO REIMBURSED
+              PROJECT MANAGER & DEVELOPER
             </motion.span>
 
             {/* Main Heading */}
