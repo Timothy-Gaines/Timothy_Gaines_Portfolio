@@ -61,11 +61,11 @@ export default function ScrollProgressRail() {
       className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-3"
     >
       {/* Progress line background */}
-      <div className="absolute right-[7px] top-0 bottom-0 w-[2px] bg-border/50 rounded-full" />
-      
+      <div className="absolute right-[7px] top-0 bottom-0 w-[2px] bg-border rounded-full" />
+
       {/* Active progress indicator */}
       <motion.div
-        className="absolute right-[7px] top-0 w-[2px] bg-signal-orange rounded-full origin-top"
+        className="absolute right-[7px] top-0 w-[2px] bg-accent rounded-full origin-top"
         style={{ height: `${scrollProgress * 100}%` }}
       />
 
@@ -86,7 +86,7 @@ export default function ScrollProgressRail() {
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
-                  className="font-mono text-xs text-signal-orange font-medium"
+                  className="font-mono text-xs text-accent font-medium"
                 >
                   {section.label}
                 </motion.span>
@@ -105,11 +105,11 @@ export default function ScrollProgressRail() {
               {isActive ? (
                 <motion.div
                   layoutId="activeIndicator"
-                  className="w-4 h-4 bg-signal-orange rounded-sm"
+                  className="w-4 h-4 bg-accent rounded-sm"
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               ) : (
-                <div className="w-2 h-2 bg-border group-hover:bg-secondary-text rounded-full transition-all duration-200" />
+                <div className="w-2 h-2 bg-border group-hover:bg-muted rounded-full transition-all duration-200" />
               )}
             </div>
           </button>

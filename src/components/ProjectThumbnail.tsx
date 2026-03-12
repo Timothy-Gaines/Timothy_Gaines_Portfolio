@@ -31,7 +31,7 @@ export default function ProjectThumbnail({ src, alt, index }: ProjectThumbnailPr
   return (
     <div
       ref={ref}
-      className="relative w-full aspect-[16/10] overflow-hidden rounded-t-lg bg-slate-800/50"
+      className="relative w-full aspect-[16/10] overflow-hidden rounded-t-lg bg-background-card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -79,7 +79,7 @@ export default function ProjectThumbnail({ src, alt, index }: ProjectThumbnailPr
             opacity: isHovered ? 0 : 1,
           }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent"
         />
 
         {/* Hover shine effect */}
@@ -95,7 +95,7 @@ export default function ProjectThumbnail({ src, alt, index }: ProjectThumbnailPr
       </motion.div>
 
       {/* Loading skeleton placeholder */}
-      <div className="absolute inset-0 bg-slate-800/50 -z-10 animate-pulse" />
+      <div className="absolute inset-0 bg-background-card -z-10 animate-pulse" />
     </div>
   );
 }

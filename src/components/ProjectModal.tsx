@@ -96,7 +96,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           onClick={onClose}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-primary-text/20 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-primary-text/30 backdrop-blur-sm" />
 
           {/* Modal */}
           <motion.div
@@ -114,7 +114,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 text-secondary-text hover:text-signal-orange transition-colors rounded-lg hover:bg-white/50"
+              className="absolute top-4 right-4 p-2 text-secondary-text hover:text-accent transition-colors rounded-lg hover:bg-accent-muted"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -126,7 +126,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1, duration: 0.3 }}
-                className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl bg-slate-800/50 cursor-pointer group"
+                className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl bg-background-card cursor-pointer group"
                 onClick={() => setIsImageExpanded(true)}
               >
                 <Image
@@ -154,9 +154,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {/* Content */}
             <div className="p-8">
               {/* Header */}
-              <h2
+                <h2
                 id="modal-title"
-                className="font-heading text-2xl md:text-3xl font-semibold text-primary-text mb-2 pr-10"
+                className="font-heading text-2xl md:text-3xl font-normal text-primary-text mb-2 pr-10"
               >
                 {project.title}
               </h2>
@@ -179,7 +179,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               {project.challenge && (
                 <div className="space-y-6 mb-8">
                   <div className="glass-panel-subtle p-5">
-                    <h3 className="font-heading text-sm font-semibold text-signal-orange uppercase tracking-wider mb-2">
+                    <h3 className="font-heading text-sm font-semibold text-accent uppercase tracking-wider mb-2">
                       Challenge
                     </h3>
                     <p className="font-body text-secondary-text">

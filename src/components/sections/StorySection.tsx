@@ -37,7 +37,7 @@ export default function StorySection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="font-heading text-3xl md:text-4xl font-semibold text-primary-text mb-6"
+            className="font-heading text-3xl md:text-4xl font-normal text-primary-text mb-6"
           >
             From receipt upload to reimbursement approval
           </motion.h2>
@@ -62,7 +62,7 @@ export default function StorySection() {
                 transition={{ delay: 0.4 + index * 0.15, duration: 0.5 }}
                 className="flex gap-4 items-start"
               >
-                <span className="font-mono text-sm font-medium text-signal-orange bg-signal-orange/10 px-3 py-1 rounded-md whitespace-nowrap">
+                <span className="section-label text-accent bg-accent-muted px-3 py-1 rounded-md whitespace-nowrap">
                   {bullet.label}
                 </span>
                 <p className="font-body text-secondary-text leading-relaxed pt-0.5">

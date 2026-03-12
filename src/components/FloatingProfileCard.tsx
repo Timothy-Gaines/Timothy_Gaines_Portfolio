@@ -101,7 +101,7 @@ export default function FloatingProfileCard({ imageSrc, alt }: FloatingProfileCa
               x: prefersReducedMotion ? 0 : shadowX,
               y: prefersReducedMotion ? 0 : shadowY,
             }}
-            className="absolute inset-0 bg-gradient-to-br from-teal/30 via-signal-orange/20 to-teal/30 rounded-3xl blur-2xl opacity-60 -z-10 scale-105"
+            className="absolute inset-0 bg-gradient-to-br from-teal/20 via-accent/15 to-teal/20 rounded-3xl blur-2xl opacity-50 -z-10 scale-105"
           />
 
           {/* Main card container */}
@@ -118,7 +118,7 @@ export default function FloatingProfileCard({ imageSrc, alt }: FloatingProfileCa
               />
 
               {/* Subtle gradient overlay at bottom */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
 
               {/* Shine effect on hover */}
               <motion.div
@@ -150,7 +150,7 @@ export default function FloatingProfileCard({ imageSrc, alt }: FloatingProfileCa
           {/* Decorative elements with depth */}
           <motion.div
             style={{ translateZ: 30 }}
-            className="absolute -top-3 -right-3 w-16 h-16 bg-signal-orange/20 rounded-full blur-xl"
+            className="absolute -top-3 -right-3 w-16 h-16 bg-accent/20 rounded-full blur-xl"
           />
           <motion.div
             style={{ translateZ: 20 }}

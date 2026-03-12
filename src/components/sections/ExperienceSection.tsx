@@ -72,7 +72,7 @@ function TimelineNode({
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ delay: index * 0.15, duration: 0.5 }}
       onClick={onClick}
-      className={`relative pl-8 pb-8 cursor-pointer group ${
+        className={`relative pl-8 pb-8 cursor-pointer group ${
         index < experiences.length - 1 ? "border-l-2 border-border" : ""
       }`}
     >
@@ -80,8 +80,8 @@ function TimelineNode({
       <div
         className={`absolute left-0 top-0 w-4 h-4 rounded-full -translate-x-[9px] transition-all duration-300 ${
           isActive
-            ? "bg-signal-orange scale-110 shadow-lg shadow-signal-orange/30"
-            : "bg-border group-hover:bg-secondary-text"
+            ? "bg-accent scale-110 shadow-lg shadow-accent/25"
+            : "bg-border group-hover:bg-muted"
         }`}
       />
 
@@ -89,13 +89,13 @@ function TimelineNode({
       <div
         className={`glass-panel-subtle p-4 transition-all duration-300 ${
           isActive
-            ? "border-signal-orange/50 shadow-md"
-            : "group-hover:border-secondary-text/30"
+            ? "border-accent/50 shadow-md"
+            : "group-hover:border-muted/50"
         }`}
       >
         <h3
           className={`font-heading text-lg font-semibold transition-colors ${
-            isActive ? "text-signal-orange" : "text-primary-text group-hover:text-signal-orange"
+            isActive ? "text-accent" : "text-primary-text group-hover:text-accent"
           }`}
         >
           {experience.title}
@@ -125,7 +125,7 @@ function ExperienceDetail({ experience }: { experience: Experience }) {
     >
       {/* Header */}
       <div className="mb-6">
-        <h3 className="font-heading text-2xl font-semibold text-primary-text mb-2">
+        <h3 className="font-heading text-2xl font-normal text-primary-text mb-2">
           {experience.title}
         </h3>
         <div className="flex flex-wrap items-center gap-4 text-secondary-text">
@@ -153,7 +153,7 @@ function ExperienceDetail({ experience }: { experience: Experience }) {
             transition={{ delay: i * 0.1, duration: 0.3 }}
             className="flex items-start gap-3 font-body text-secondary-text"
           >
-            <span className="w-1.5 h-1.5 bg-signal-orange rounded-full mt-2 flex-shrink-0" />
+            <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
             {bullet}
           </motion.li>
         ))}
@@ -179,10 +179,10 @@ export default function ExperienceSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-sm text-signal-orange tracking-wider">
+          <span className="section-label">
             BACKGROUND
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-primary-text mt-2">
+          <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
             Experience
           </h2>
         </motion.div>

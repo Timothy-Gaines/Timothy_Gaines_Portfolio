@@ -199,9 +199,9 @@ function Scanner({ scrollState }: { scrollState: ScrollState }) {
       {/* Orange accent strip */}
       <mesh position={[0, 0.18, 0.35]}>
         <boxGeometry args={[1.6, 0.02, 0.08]} />
-        <meshStandardMaterial 
-          color="#FF5A1F" 
-          emissive="#FF5A1F" 
+        <meshStandardMaterial
+          color="#d4a853"
+          emissive="#d4a853"
           emissiveIntensity={glowIntensity.current * 0.5}
           roughness={0.3}
         />
@@ -222,13 +222,13 @@ function Scanner({ scrollState }: { scrollState: ScrollState }) {
       {/* Scan line */}
       <mesh ref={scanLineRef} position={[0, 0, 0.3]} visible={false}>
         <planeGeometry args={[1.4, 0.03]} />
-        <meshBasicMaterial color="#FF5A1F" transparent opacity={0.9} />
+        <meshBasicMaterial color="#d4a853" transparent opacity={0.9} />
       </mesh>
-      
+
       {/* Scanner glow */}
       <pointLight
         position={[0, 0.3, 0.3]}
-        color="#FF5A1F"
+        color="#d4a853"
         intensity={glowIntensity.current * 2}
         distance={3}
       />
@@ -297,7 +297,7 @@ function DataCard({ scrollState }: { scrollState: ScrollState }) {
       {/* Card border glow */}
       <mesh position={[0, 0, -0.03]}>
         <planeGeometry args={[2.05, 2.85]} />
-        <meshBasicMaterial color="#E7DACB" transparent opacity={0.3} />
+        <meshBasicMaterial color="#252a32" transparent opacity={0.5} />
       </mesh>
       
       {/* Data rows */}
@@ -310,7 +310,7 @@ function DataCard({ scrollState }: { scrollState: ScrollState }) {
           <Text
             position={[-0.8, 0, 0]}
             fontSize={0.1}
-            color="#5A5A5A"
+            color="#8b929a"
             anchorX="left"
           >
             {row.label}
@@ -318,7 +318,7 @@ function DataCard({ scrollState }: { scrollState: ScrollState }) {
           <Text
             position={[0.8, 0, 0]}
             fontSize={0.1}
-            color="#141414"
+            color="#f2efe9"
             anchorX="right"
           >
             {row.value}
@@ -326,7 +326,7 @@ function DataCard({ scrollState }: { scrollState: ScrollState }) {
           {/* Underline */}
           <mesh position={[0, -0.12, 0]}>
             <planeGeometry args={[1.6, 0.005]} />
-            <meshBasicMaterial color="#E7DACB" transparent opacity={0.5} />
+            <meshBasicMaterial color="#252a32" transparent opacity={0.5} />
           </mesh>
         </group>
       ))}
@@ -335,7 +335,7 @@ function DataCard({ scrollState }: { scrollState: ScrollState }) {
       <group position={[0, -1.1, 0.04]} visible={checkmarkOpacity.current > 0.1}>
         <mesh>
           <circleGeometry args={[0.2, 32]} />
-          <meshBasicMaterial color="#0AA6A6" transparent opacity={checkmarkOpacity.current} />
+          <meshBasicMaterial color="#2d9d8a" transparent opacity={checkmarkOpacity.current} />
         </mesh>
         <Text
           position={[0, 0, 0.01]}
@@ -394,7 +394,7 @@ function ReimbursedCard({ scrollState }: { scrollState: ScrollState }) {
       <Text
         position={[0, 0.1, 0.03]}
         fontSize={0.18}
-        color="#0AA6A6"
+        color="#2d9d8a"
         visible={opacity.current > 0.5}
       >
         REIMBURSED
@@ -404,7 +404,7 @@ function ReimbursedCard({ scrollState }: { scrollState: ScrollState }) {
       <Text
         position={[0, -0.15, 0.03]}
         fontSize={0.12}
-        color="#5A5A5A"
+        color="#8b929a"
         visible={opacity.current > 0.5}
       >
         Transaction Complete • $247.50
@@ -418,9 +418,9 @@ function DeskSurface() {
   return (
     <mesh position={[0, -2.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[20, 20]} />
-      <meshStandardMaterial 
-        color="#F5F0E6" 
-        roughness={0.95} 
+      <meshStandardMaterial
+        color="#14171c"
+        roughness={0.95}
         metalness={0}
       />
     </mesh>
@@ -472,7 +472,7 @@ function Scene({ scrollState }: { scrollState: ScrollState }) {
       {/* Lighting setup - product photography style */}
       <ambientLight intensity={0.4} />
       <directionalLight position={[5, 5, 5]} intensity={0.6} castShadow />
-      <directionalLight position={[-3, 3, -2]} intensity={0.3} color="#FFE4D6" />
+      <directionalLight position={[-3, 3, -2]} intensity={0.3} color="#e8d4a8" />
       <MouseLight />
       
       {/* Environment for reflections */}

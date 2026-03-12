@@ -79,10 +79,10 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-sm text-signal-orange tracking-wider">
+          <span className="section-label">
             CAPABILITIES
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-primary-text mt-2">
+          <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
             Skills and Tools
           </h2>
         </motion.div>

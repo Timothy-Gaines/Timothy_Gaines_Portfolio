@@ -48,16 +48,16 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-6">
           <div
             className={`glass-panel px-6 py-3 flex items-center justify-between transition-all duration-300 ${
-              isScrolled ? "shadow-lg" : ""
+              isScrolled ? "shadow-lg shadow-black/20" : ""
             }`}
           >
             {/* Brand */}
             <a
               href="#story"
               onClick={(e) => handleNavClick(e, "#story")}
-              className="font-heading font-semibold text-lg tracking-tight text-primary-text hover:text-signal-orange transition-colors duration-200"
+              className="font-heading font-normal text-xl tracking-tight text-primary-text hover:text-accent transition-colors duration-200"
             >
-              TIMOTHY.GAINES
+              Timothy Gaines
             </a>
 
             {/* Desktop Navigation */}
@@ -67,10 +67,10 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="relative px-4 py-2 font-body text-sm text-secondary-text hover:text-signal-orange transition-all duration-200 group"
+                  className="relative px-4 py-2 font-body text-sm text-secondary-text hover:text-accent transition-all duration-200 group"
                 >
                   <span className="relative z-10">{link.label}</span>
-                  <span className="absolute inset-0 border border-transparent group-hover:border-signal-orange/30 rounded-lg transition-all duration-200" />
+                  <span className="absolute inset-0 border border-transparent group-hover:border-accent/40 rounded-lg transition-all duration-200" />
                 </a>
               ))}
             </div>
@@ -78,7 +78,7 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-primary-text hover:text-signal-orange transition-colors"
+              className="md:hidden p-2 text-primary-text hover:text-accent transition-colors"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -103,7 +103,7 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="px-4 py-3 font-body text-base text-primary-text hover:text-signal-orange hover:bg-white/50 rounded-lg transition-all duration-200"
+                  className="px-4 py-3 font-body text-base text-primary-text hover:text-accent hover:bg-accent-muted rounded-lg transition-all duration-200"
                 >
                   {link.label}
                 </a>

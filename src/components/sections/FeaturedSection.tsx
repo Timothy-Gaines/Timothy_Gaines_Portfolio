@@ -97,7 +97,7 @@ function FeaturedChapter({
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="font-heading text-2xl md:text-3xl font-semibold text-primary-text mb-2"
+            className="font-heading text-2xl md:text-3xl font-normal text-primary-text mb-2"
           >
             {project.title}
           </motion.h3>
@@ -118,7 +118,7 @@ function FeaturedChapter({
             transition={{ delay: 0.3, duration: 0.5 }}
             className="mb-5"
           >
-            <h4 className="font-heading text-sm font-semibold text-signal-orange uppercase tracking-wider mb-2">
+            <h4 className="font-heading text-sm font-semibold text-accent uppercase tracking-wider mb-2">
               Challenge
             </h4>
             <p className="font-body text-secondary-text leading-relaxed">
@@ -157,7 +157,7 @@ function FeaturedChapter({
                   key={i}
                   className="font-body text-secondary-text flex items-start gap-2"
                 >
-                  <span className="w-1.5 h-1.5 bg-signal-orange rounded-full mt-2 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
                   {item}
                 </li>
               ))}
@@ -239,10 +239,10 @@ export default function FeaturedSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-sm text-signal-orange tracking-wider">
+          <span className="section-label">
             FEATURED WORK
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-primary-text mt-2">
+          <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
             Key Projects
           </h2>
         </motion.div>

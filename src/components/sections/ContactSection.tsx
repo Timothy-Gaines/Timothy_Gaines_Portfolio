@@ -14,7 +14,7 @@ export default function ContactSection() {
       ref={sectionRef}
       className="relative z-20 py-32"
       style={{
-        background: "linear-gradient(to bottom, #E7DACB, #FBF6EE)",
+        background: "linear-gradient(to bottom, var(--background), var(--background-elevated))",
       }}
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
@@ -23,7 +23,7 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="font-heading text-5xl md:text-6xl lg:text-7xl font-semibold text-primary-text mb-6"
+          className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-primary-text mb-6"
         >
           Say Hello
         </motion.h2>
@@ -61,7 +61,7 @@ export default function ContactSection() {
             href="https://www.linkedin.com/in/timothy-gaines-329b23257/"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-panel p-4 text-secondary-text hover:text-signal-orange hover:border-signal-orange transition-all duration-200"
+            className="glass-panel p-4 text-secondary-text hover:text-accent hover:border-accent transition-all duration-200"
             aria-label="LinkedIn"
           >
             <Linkedin className="w-6 h-6" />
@@ -70,7 +70,7 @@ export default function ContactSection() {
             href="https://github.com/Timothy-Gaines"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-panel p-4 text-secondary-text hover:text-signal-orange hover:border-signal-orange transition-all duration-200"
+            className="glass-panel p-4 text-secondary-text hover:text-accent hover:border-accent transition-all duration-200"
             aria-label="GitHub"
           >
             <Github className="w-6 h-6" />

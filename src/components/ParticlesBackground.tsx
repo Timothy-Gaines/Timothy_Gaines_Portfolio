@@ -92,7 +92,7 @@ export default function ParticlesBackground() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(90, 90, 90, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(212, 168, 83, ${particle.opacity * 0.4})`;
         ctx.fill();
       });
 
@@ -109,7 +109,7 @@ export default function ParticlesBackground() {
       particlesRef.current.forEach((particle) => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(90, 90, 90, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(212, 168, 83, ${particle.opacity * 0.35})`;
         ctx.fill();
       });
     }

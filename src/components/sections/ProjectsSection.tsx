@@ -141,7 +141,7 @@ function ProjectCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       onClick={onClick}
-      className="glass-panel overflow-hidden cursor-pointer group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:border-signal-orange relative"
+      className="glass-panel overflow-hidden cursor-pointer group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-black/20 hover:border-accent/50 relative"
     >
       {project.githubUrl && (
         <a
@@ -149,7 +149,7 @@ function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
           onClick={(event) => event.stopPropagation()}
-          className="glass-panel p-2 text-secondary-text hover:text-signal-orange hover:border-signal-orange transition-all duration-200 absolute top-4 right-4 z-10"
+          className="glass-panel p-2 text-secondary-text hover:text-accent hover:border-accent transition-all duration-200 absolute top-4 right-4 z-10"
           aria-label="GitHub"
         >
           <Github className="w-4 h-4" />
@@ -167,7 +167,7 @@ function ProjectCard({
       {/* Content */}
       <div className="p-6">
         {/* Title */}
-        <h3 className="font-heading text-xl font-semibold text-primary-text mb-3 group-hover:text-signal-orange transition-colors">
+        <h3 className="font-heading text-xl font-semibold text-primary-text mb-3 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
 
@@ -181,7 +181,7 @@ function ProjectCard({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="tech-tag text-xs group-hover:border-signal-orange/50"
+              className="tech-tag text-xs group-hover:border-accent/50"
             >
               {tag}
             </span>
@@ -208,10 +208,10 @@ export default function ProjectsSection() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="font-mono text-sm text-signal-orange tracking-wider">
-              MORE WORK
-            </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-semibold text-primary-text mt-2">
+          <span className="section-label">
+            MORE WORK
+          </span>
+          <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
               Projects
             </h2>
           </motion.div>

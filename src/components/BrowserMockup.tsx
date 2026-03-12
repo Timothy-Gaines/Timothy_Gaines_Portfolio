@@ -229,7 +229,7 @@ export default function BrowserMockup({ images, title = "Preview", stacked = fal
               }}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 activeIndex === idx
-                  ? "bg-signal-orange w-6"
+                  ? "bg-accent w-6"
                   : "bg-slate-500 hover:bg-slate-400"
               }`}
               aria-label={`View ${titles[idx]}`}
@@ -288,7 +288,7 @@ export default function BrowserMockup({ images, title = "Preview", stacked = fal
           className="relative"
         >
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-teal/20 via-signal-orange/10 to-teal/20 rounded-xl blur-xl opacity-50 -z-10 scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-br from-teal/15 via-accent/10 to-teal/15 rounded-xl blur-xl opacity-50 -z-10 scale-105" />
 
           {/* Browser window */}
           <div className="rounded-xl overflow-hidden shadow-2xl border border-slate-700/30 bg-slate-900">

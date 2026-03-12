@@ -32,7 +32,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="font-mono text-sm text-secondary-text tracking-wider"
+              className="section-label text-secondary-text"
             >
               PROJECT MANAGER & DEVELOPER
             </motion.span>
@@ -42,7 +42,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="font-heading text-5xl md:text-6xl lg:text-7xl font-semibold text-primary-text mt-4 mb-6"
+              className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-primary-text mt-4 mb-6"
             >
               Timothy Gaines
             </motion.h1>
