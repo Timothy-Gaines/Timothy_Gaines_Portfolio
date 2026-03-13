@@ -3,6 +3,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Code2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import BrowserMockup from "../BrowserMockup";
 
 interface FeaturedProject {
@@ -91,124 +95,137 @@ function FeaturedChapter({
     >
       {/* Content Side */}
       <div className={`${contentOrder} lg:${contentOrder}`}>
-        <div className="glass-panel p-8 md:p-10">
-          {/* Header */}
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="font-heading text-2xl md:text-3xl font-normal text-primary-text mb-2"
-          >
-            {project.title}
-          </motion.h3>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.25, duration: 0.5 }}
-            className="font-mono text-sm text-secondary-text mb-6"
-          >
-            {project.subtitle}
-          </motion.p>
+        <Card className="bg-card/80 backdrop-blur-sm border-border">
+          <CardContent className="p-8 md:p-10">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="font-heading text-2xl md:text-3xl font-normal text-card-foreground mb-2"
+            >
+              {project.title}
+            </motion.h3>
 
-          {/* Challenge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="mb-5"
-          >
-            <h4 className="font-heading text-sm font-semibold text-accent uppercase tracking-wider mb-2">
-              Challenge
-            </h4>
-            <p className="font-body text-secondary-text leading-relaxed">
-              {project.challenge}
-            </p>
-          </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.25, duration: 0.5 }}
+              className="font-mono text-sm text-muted-foreground mb-6"
+            >
+              {project.subtitle}
+            </motion.p>
 
-          {/* Solution */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.35, duration: 0.5 }}
-            className="mb-5"
-          >
-            <h4 className="font-heading text-sm font-semibold text-teal uppercase tracking-wider mb-2">
-              Solution
-            </h4>
-            <p className="font-body text-secondary-text leading-relaxed">
-              {project.solution}
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mb-5"
+            >
+              <h4 className="font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-2">
+                Challenge
+              </h4>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                {project.challenge}
+              </p>
+            </motion.div>
 
-          {/* Impact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="mb-6"
-          >
-            <h4 className="font-heading text-sm font-semibold text-primary-text uppercase tracking-wider mb-2">
-              Impact
-            </h4>
-            <ul className="space-y-2">
-              {project.impact.map((item, i) => (
-                <li
-                  key={i}
-                  className="font-body text-secondary-text flex items-start gap-2"
-                >
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-                  {item}
-                </li>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className="mb-5"
+            >
+              <h4 className="font-heading text-sm font-semibold text-chart-2 uppercase tracking-wider mb-2">
+                Solution
+              </h4>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                {project.solution}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mb-6"
+            >
+              <h4 className="font-heading text-sm font-semibold text-card-foreground uppercase tracking-wider mb-2">
+                Impact
+              </h4>
+              <ul className="space-y-2">
+                {project.impact.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.5 + i * 0.08, duration: 0.35 }}
+                    className="font-body text-base text-muted-foreground flex items-start gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <Separator className="mb-6" />
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="flex flex-wrap gap-1.5 mb-8"
+            >
+              {project.techStack.map((tech) => (
+                <Badge key={tech} variant="outline" className="font-mono text-xs text-muted-foreground">
+                  {tech}
+                </Badge>
               ))}
-            </ul>
-          </motion.div>
+            </motion.div>
 
-          {/* Tech Stack */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.45, duration: 0.5 }}
-            className="flex flex-wrap gap-2 mb-8"
-          >
-            {project.techStack.map((tech) => (
-              <span key={tech} className="tech-tag">
-                {tech}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-wrap gap-3"
-          >
-            {project.ctaButtons.map((btn) => {
-              const ButtonComponent = btn.href ? "a" : "button";
-              const buttonProps = btn.href
-                ? { href: btn.href, target: "_blank", rel: "noopener noreferrer" }
-                : {};
-              return (
-                <ButtonComponent
-                  key={btn.label}
-                  {...buttonProps}
-                  className={`${
-                    btn.primary ? "btn-primary" : "btn-secondary"
-                  } font-body text-sm flex items-center gap-2`}
-                >
-                  {btn.primary ? (
-                    <ExternalLink className="w-4 h-4" />
-                  ) : (
-                    <Code2 className="w-4 h-4" />
-                  )}
-                  {btn.label}
-                </ButtonComponent>
-              );
-            })}
-          </motion.div>
-        </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="flex flex-wrap gap-3"
+            >
+              {project.ctaButtons.map((btn) =>
+                btn.href ? (
+                  <Button
+                    key={btn.label}
+                    variant={btn.primary ? "default" : "outline"}
+                    size="lg"
+                    className="font-body text-base px-5 py-2.5"
+                    render={
+                      <a href={btn.href} target="_blank" rel="noopener noreferrer" />
+                    }
+                  >
+                    {btn.primary ? (
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                    ) : (
+                      <Code2 className="w-4 h-4 mr-2" />
+                    )}
+                    {btn.label}
+                  </Button>
+                ) : (
+                  <Button
+                    key={btn.label}
+                    variant={btn.primary ? "default" : "outline"}
+                    size="lg"
+                    className="font-body text-base px-5 py-2.5"
+                  >
+                    {btn.primary ? (
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                    ) : (
+                      <Code2 className="w-4 h-4 mr-2" />
+                    )}
+                    {btn.label}
+                  </Button>
+                )
+              )}
+            </motion.div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Visual Side - Browser Mockup */}
@@ -225,19 +242,28 @@ function FeaturedChapter({
   );
 }
 
+function SectionDivider() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
+  return <div ref={ref} className={`animated-divider ${isInView ? "visible" : ""}`} />;
+}
+
 export default function FeaturedSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-50px" });
+  const headingRef = useRef<HTMLDivElement>(null);
+  const headingInView = useInView(headingRef, { once: true, margin: "-30px" });
 
   return (
     <section id="featured" ref={sectionRef} className="py-24 relative z-20">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
+        <SectionDivider />
         <motion.div
+          ref={headingRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 mt-10"
         >
           <span className="section-label">
             FEATURED WORK
@@ -245,6 +271,7 @@ export default function FeaturedSection() {
           <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
             Key Projects
           </h2>
+          <span className={`section-heading-line ${headingInView ? "visible" : ""}`} />
         </motion.div>
 
         {/* Featured Chapters */}

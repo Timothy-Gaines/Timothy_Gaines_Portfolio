@@ -3,6 +3,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Github } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import ProjectModal from "../ProjectModal";
 import ProjectThumbnail from "../ProjectThumbnail";
 
@@ -103,7 +106,6 @@ const projects: Project[] = [
     githubUrl: "https://github.com/Timothy-Gaines",
     image: "/images/sql-job-analysis.png",
   },
-  
   {
     id: 4,
     title: "Power BI Dashboard",
@@ -140,84 +142,93 @@ function ProjectCard({
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      onClick={onClick}
-      className="glass-panel overflow-hidden cursor-pointer group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-black/20 hover:border-accent/50 relative"
+      className="h-full"
     >
-      {project.githubUrl && (
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(event) => event.stopPropagation()}
-          className="glass-panel p-2 text-secondary-text hover:text-accent hover:border-accent transition-all duration-200 absolute top-4 right-4 z-10"
-          aria-label="GitHub"
-        >
-          <Github className="w-4 h-4" />
-        </a>
-      )}
-      {/* Thumbnail */}
-      {project.image && (
-        <ProjectThumbnail
-          src={project.image}
-          alt={project.title}
-          index={index}
-        />
-      )}
+      <Card
+        onClick={onClick}
+        className="h-full flex flex-col cursor-pointer group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-black/20 bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 relative overflow-hidden"
+      >
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) => event.stopPropagation()}
+            className="absolute top-4 right-4 z-10"
+          >
+            <Button variant="outline" size="icon-sm" className="bg-card/80 backdrop-blur-sm">
+              <Github className="w-3.5 h-3.5" />
+            </Button>
+          </a>
+        )}
 
-      {/* Content */}
-      <div className="p-6">
-        {/* Title */}
-        <h3 className="font-heading text-xl font-semibold text-primary-text mb-3 group-hover:text-accent transition-colors">
-          {project.title}
-        </h3>
+        {project.image && (
+          <ProjectThumbnail
+            src={project.image}
+            alt={project.title}
+            index={index}
+          />
+        )}
 
-        {/* Description */}
-        <p className="font-body text-secondary-text text-sm leading-relaxed mb-4">
-          {project.description}
-        </p>
+        <CardContent className="p-6 flex-1 flex flex-col min-h-0">
+          <h3 className="font-heading text-2xl text-card-foreground mb-3 group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="tech-tag text-xs group-hover:border-accent/50"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
+          <p className="font-body text-muted-foreground text-base leading-relaxed mb-4 flex-1 line-clamp-3">
+            {project.description}
+          </p>
+
+          <div className="flex flex-wrap gap-1.5 mt-auto">
+            {project.tags.map((tag) => (
+              <Badge
+                key={tag}
+                variant="outline"
+                className="text-sm font-mono text-muted-foreground group-hover:border-primary/50 transition-colors"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
+}
+
+function SectionDivider() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
+  return <div ref={ref} className={`animated-divider ${isInView ? "visible" : ""}`} />;
 }
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-50px" });
+  const headingRef = useRef<HTMLDivElement>(null);
+  const headingInView = useInView(headingRef, { once: true, margin: "-30px" });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <>
       <section id="projects" ref={sectionRef} className="py-24 relative z-20">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Section Header */}
+          <SectionDivider />
           <motion.div
+            ref={headingRef}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-16 mt-10"
           >
-          <span className="section-label">
-            MORE WORK
-          </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
+            <span className="section-label">MORE WORK</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary-text mt-2">
               Projects
             </h2>
+            <span className={`section-heading-line ${headingInView ? "visible" : ""}`} />
           </motion.div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {projects.map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -230,7 +241,6 @@ export default function ProjectsSection() {
         </div>
       </section>
 
-      {/* Modal */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}

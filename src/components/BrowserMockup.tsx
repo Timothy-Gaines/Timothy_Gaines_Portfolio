@@ -29,6 +29,8 @@ export default function BrowserMockup({ images, title = "Preview", stacked = fal
   const rotateX = useTransform(smoothMouseY, [-200, 200], [5, -5]);
   const rotateY = useTransform(smoothMouseX, [-200, 200], [-5, 5]);
 
+  const AUTO_SWAP_INTERVAL_MS = 4000;
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);
@@ -40,6 +42,17 @@ export default function BrowserMockup({ images, title = "Preview", stacked = fal
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  // Auto-swap stacked images every few seconds (only when stacked + multiple images, respect reduced motion)
+  useEffect(() => {
+    if (!stacked || images.length <= 1 || prefersReducedMotion) return;
+
+    const id = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }, AUTO_SWAP_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, [stacked, images.length, prefersReducedMotion]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (prefersReducedMotion || !containerRef.current) return;
@@ -120,10 +133,8 @@ export default function BrowserMockup({ images, title = "Preview", stacked = fal
                 : {}
             }
             transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-              mass: 1,
+              duration: 0.7,
+              ease: [0.32, 0.72, 0, 1],
             }}
             className="absolute inset-0 w-full"
           >
@@ -169,10 +180,8 @@ export default function BrowserMockup({ images, title = "Preview", stacked = fal
                 : {}
             }
             transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-              mass: 1,
+              duration: 0.7,
+              ease: [0.32, 0.72, 0, 1],
             }}
             className="absolute inset-0 w-full"
           >
