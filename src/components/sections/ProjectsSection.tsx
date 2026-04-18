@@ -25,6 +25,23 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 7,
+    title: "Phishing Detector",
+    description:
+      "PhishGuard pairs a Chrome extension with a web dashboard to automatically scan incoming emails, label threat levels, and guide users through next steps.",
+    tags: ["TypeScript", "Chrome Extension", "Security", "Dashboard"],
+    fullDescription:
+      "PhishGuard is a phishing detection system with a built-in Chrome extension that actively analyzes emails as they come in, marks suspicious messages by severity, and syncs scan results back to a web dashboard for tracking and follow-up.",
+    challenge:
+      "Manual phishing checkers require users to copy and paste suspicious emails into a separate tool, which slows down review and leaves risky messages sitting in the inbox without clear context.",
+    solution:
+      "Built a Chrome extension that scans emails directly in the inbox, highlights high-risk messages in red, flags medium-risk messages in yellow, and leaves safe messages untouched. When an email is high risk, the extension adds a warning banner above the message with guidance on what to do next, then connects the result back to the PhishGuard dashboard.",
+    impact:
+      "Removes the copy-and-paste workflow by automatically detecting threats in context, then lets users return to the website to track scan history, review threat patterns, and find recommended actions.",
+    githubUrl: "https://github.com/Timothy-Gaines/Phishing_detector",
+    image: "/images/phishguard-dashboard.png",
+  },
+  {
     id: 5,
     title: "EV Charging Station Analysis",
     description:
@@ -38,7 +55,7 @@ const projects: Project[] = [
       "Used SQL to query and analyze charging station data, creating visualizations that highlight geographic distribution, usage patterns, and growth trends.",
     impact:
       "Produced clear insights about EV infrastructure that could inform planning and investment decisions.",
-    githubUrl: "https://github.com/Timothy-Gaines",
+    githubUrl: "https://github.com/Timothy-Gaines/EV_SQL_Project",
     image: "/images/ev-charging-analysis.png",
   },
   {
@@ -74,20 +91,20 @@ const projects: Project[] = [
     image: "/images/spotify-keychains.png",
   },
   {
-    id: 1,
-    title: "Inventory Tracker",
+    id: 8,
+    title: "Expense Tracker with Receipt Viewing",
     description:
-      "A location-based lab inventory system for Bronco Space. Built around item locations today, with a planned camera-based workflow to detect items and return them to the correct station.",
-    tags: ["Excel", "Operations", "Process Design"],
+      "Excel, VBA, and Python automation system for logging expenses, viewing receipts, and organizing reimbursement files.",
+    tags: ["Excel", "VBA", "Python", "Automation"],
     fullDescription:
-      "This inventory system was designed to solve the problem of misplaced equipment in a busy lab environment. The system tracks items by their designated locations and provides clear workflows for check-in and check-out processes.",
+      "An Excel-based expense tracker built to make reimbursement review faster and more organized by connecting expense records with viewable receipt files.",
     challenge:
-      "Lab equipment was frequently misplaced, causing delays and frustration when team members couldn't find tools they needed for their projects.",
+      "Receipts were submitted into a shared folder, but it was time-consuming to organize them, view them during review, and keep expense logs accurate for analysis and reimbursements.",
     solution:
-      "Created an Excel-based tracking system with location assignments, check-out logs, and visual dashboards showing current item locations and availability.",
+      "Built an Excel expense tracker with VBA macros and functional buttons for entering data, saving records, and supporting graphical views. Added receipt viewing inside the workbook and wrote a Python script to convert PDFs into JPEGs and automatically move files into the correct locations.",
     impact:
-      "Reduced time spent searching for equipment by establishing clear location protocols and accountability tracking.",
-    image: "/images/inventory-tracker.png",
+      "Receipts became viewable alongside logged expenses, improving organization and reducing time spent on manual file cleanup.",
+    image: "/images/expense-tracker.png",
   },
   {
     id: 6,
@@ -103,8 +120,24 @@ const projects: Project[] = [
       "Wrote targeted SQL queries to clean, filter, and aggregate job posting data, then summarized findings around top-paying roles, most requested skills, and skills associated with higher salaries.",
     impact:
       "Produced clear, query-backed insights to guide which skills to prioritize and which roles to target based on demand and compensation signals.",
-    githubUrl: "https://github.com/Timothy-Gaines",
+    githubUrl: "https://github.com/Timothy-Gaines/SQL_Project_Data_job_Analysis",
     image: "/images/sql-job-analysis.png",
+  },
+  {
+    id: 1,
+    title: "Inventory Tracker",
+    description:
+      "A location-based lab inventory system for Bronco Space. Built around item locations today, with a planned camera-based workflow to detect items and return them to the correct station.",
+    tags: ["Excel", "Operations", "Process Design"],
+    fullDescription:
+      "This inventory system was designed to solve the problem of misplaced equipment in a busy lab environment. The system tracks items by their designated locations and provides clear workflows for check-in and check-out processes.",
+    challenge:
+      "Lab equipment was frequently misplaced, causing delays and frustration when team members couldn't find tools they needed for their projects.",
+    solution:
+      "Created an Excel-based tracking system with location assignments, check-out logs, and visual dashboards showing current item locations and availability.",
+    impact:
+      "Reduced time spent searching for equipment by establishing clear location protocols and accountability tracking.",
+    image: "/images/inventory-tracker.png",
   },
   {
     id: 4,

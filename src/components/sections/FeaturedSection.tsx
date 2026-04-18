@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Code2 } from "lucide-react";
+import { ExternalLink, Code2, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +12,7 @@ import BrowserMockup from "../BrowserMockup";
 interface FeaturedProject {
   title: string;
   subtitle: string;
+  award?: string;
   challenge: string;
   solution: string;
   impact: string[];
@@ -53,22 +54,31 @@ const featuredProjects: FeaturedProject[] = [
     mockupTitle: "reimbursement-hub.com",
   },
   {
-    title: "Expense Tracker with Receipt Viewing",
-    subtitle: "Excel + VBA + Python Automation | Jan 2022 to Jan 2024",
+    title: "Career Copilot",
+    subtitle: "AI Hackathon 2026 at Cal Poly Pomona",
+    award: "1st Place Category Winner",
     challenge:
-      "Receipts were submitted into a shared folder, but it was time-consuming to organize them, view them during review, and keep expense logs accurate for analysis and reimbursements.",
+      "Students often have resumes, projects, coursework, and goals scattered across different tools, but no clear way to translate that evidence into realistic career paths and next steps.",
     solution:
-      "I built an Excel expense tracker with VBA macros and functional buttons for entering data, saving records, and supporting graphical views. I added receipt viewing inside the workbook and wrote a Python script to convert PDFs into JPEGs and automatically move files into the correct locations.",
+      "I built an AI-powered career navigation platform that turns user evidence and onboarding answers into an interactive career map, readiness scores, role recommendations, and school-connected next steps.",
     impact: [
-      "Receipts became viewable alongside logged expenses",
-      "Improved organization and repeatability for reimbursement workflows",
-      "Reduced time spent on file cleanup and manual sorting",
+      "Won first place in its category at the AI Hackathon 2026 at Cal Poly Pomona",
+      "Turns career uncertainty into a visual map of strongest-fit and adjacent paths",
+      "Connects recommendations to real evidence, gaps, and campus resources",
     ],
-    techStack: ["Excel", "VBA", "Python", "File Automation", "Receipt Processing"],
+    techStack: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Convex",
+      "Better Auth",
+      "AI Ranking",
+      "O*NET Data",
+    ],
     ctaButtons: [],
     textPosition: "right",
-    images: ["/images/expense-tracker.png"],
-    mockupTitle: "Expense Tracker.xlsm",
+    images: ["/images/career-copilot-map.png"],
+    mockupTitle: "Career Copilot",
   },
 ];
 
@@ -97,6 +107,18 @@ function FeaturedChapter({
       <div className={`${contentOrder} lg:${contentOrder}`}>
         <Card className="bg-card/80 backdrop-blur-sm border-border">
           <CardContent className="p-8 md:p-10">
+            {project.award && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.16, duration: 0.45 }}
+                className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300/50 bg-amber-400/10 px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-amber-200 shadow-[0_0_28px_rgba(251,191,36,0.16)]"
+              >
+                <Trophy className="h-3.5 w-3.5 text-amber-300" />
+                {project.award}
+              </motion.div>
+            )}
+
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
