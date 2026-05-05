@@ -25,6 +25,22 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 9,
+    title: "Home WiFi Dashboard",
+    description:
+      "Self-hosted mesh Wi-Fi monitoring dashboard that tracks WAN health, node latency, outages, anchor-device checks, and speedtest history from a local FastAPI backend.",
+    tags: ["Next.js", "FastAPI", "SQLite", "Monitoring"],
+    fullDescription:
+      "Home WiFi Dashboard is a local network observability tool for monitoring a home mesh Wi-Fi setup. It combines a FastAPI backend, SQLite history, scheduled probes, outage detection, and a polished Next.js dashboard for viewing internet health, node performance, incidents, and speedtest trends.",
+    challenge:
+      "Mesh network issues can be hard to diagnose because WAN outages, node drops, Wi-Fi radio problems, and host-side failures often look similar without historical probe data and clear classification.",
+    solution:
+      "Built a loopback-hosted FastAPI service that collects WAN, node, anchor, and speedtest data into SQLite, classifies outages by scope and severity, and serves a responsive dashboard with live status cards, trend charts, node drilldowns, and outage logs.",
+    impact:
+      "Makes home network reliability visible at a glance, separates internet outages from mesh-node and Wi-Fi-radio issues, and keeps a searchable history for troubleshooting recurring drops.",
+    image: "/images/home-wifi-dashboard.png",
+  },
+  {
     id: 7,
     title: "Phishing Detector",
     description:
